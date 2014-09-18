@@ -10,12 +10,18 @@
 #define rendaPower_SoundDef_h
 
 
-#define DEF_SE_START       ("sound/start.mp3")
-#define DEF_SE_RUSH         ("sound/rush.mp3")
-#define DEF_SE_GOOD         ("sound/good_se.mp3")
-#define DEF_SE_BAD          ("sound/bad_se.mp3")
-#define DEF_SE_GAME_OVER    ("sound/game_over.mp3")
-#define DEF_SE_NEW_RECORD   ("sound/new_record.mp3")
+#define DEF_SE_START        ("sound/start.mp3")
 
+//毛が抜けないときの音
+#define DEF_SE_MISS         ("sound/miss.mp3")
+//毛が抜けるときの音
+#define DEF_SE_LOSS_HAIR    ("sound/unplug.mp3")
+//コンボのときの音
+#define DEF_SE_COMBO        ("sound/combo.mp3")
+
+//ゲームオーバーの音
+#define DEF_SE_GAME_OVER    ("sound/gameover.mp3")
+//タイトルに戻る音
+#define DEF_SE_TITLE_BACK   ("sound/back.mp3")
 
 #endif

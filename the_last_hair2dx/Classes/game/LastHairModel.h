@@ -69,7 +69,7 @@ public:
      * 毛の種類取得
      * @param stretchLength 伸ばす距離
      */
-    virtual HAIR_TYPE setHairType();
+    virtual HAIR_TYPE getHairType();
 };
 
 #endif /* defined(__the_last_hair2dx__LastHairModel__) */

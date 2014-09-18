@@ -113,6 +113,8 @@ void LastHairModel::onActionHairGrows()
  */
 void LastHairModel::setHairType(HAIR_TYPE value)
 {
+    this->m_type = value;
+    
     if(this->m_HairSprite)
     {
         this->m_HairSprite->removeFromParent();
@@ -139,7 +141,7 @@ void LastHairModel::setHairType(HAIR_TYPE value)
  * 毛の種類取得
  * @param stretchLength 伸ばす距離
  */
-HAIR_TYPE LastHairModel::setHairType()
+HAIR_TYPE LastHairModel::getHairType()
 {
     return this->m_type;
 }

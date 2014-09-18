@@ -7,7 +7,6 @@
 //
 
 #include "TitleScene.h"
-#include "GameRuleManager.h"
 #include "TweezeGameScene.h"
 #include "RunkingScene.h"
 #include "SimpleAudioEngine.h"
@@ -66,9 +65,17 @@ bool TitleScene::init()
 
     //スタートボタン
     CCSprite* pChallengeImg = CCSprite::create("title/startbutton.png");
+    pChallengeImg->setScale(2.0f);
     CCSprite* pChallengeImg_sel = CCSprite::create("title/startbutton.png");
-    pChallengeImg_sel->setScale(1.05f);
-    CCMenuItemSprite* challengeButton = CCMenuItemSprite::create(pChallengeImg,pChallengeImg_sel, this, menu_selector(TitleScene::moveSceneToGame));
+    pChallengeImg_sel->setScale(2.05f);
+    CCMenuItemSprite* challengeButton = CCMenuItemSprite::create(pChallengeImg,pChallengeImg_sel, this, menu_selector(TitleScene::NextScene));
+
+    pChallengeImg->setPosition(ccp(pChallengeImg->getContentSize().width * 0.5f,
+                                   pChallengeImg->getContentSize().height * 0.5f));
+    pChallengeImg->setAnchorPoint(ccp(0.5f,0.5f));
+    pChallengeImg_sel->setPosition(pChallengeImg->getPosition());
+    pChallengeImg_sel->setAnchorPoint(ccp(0.5f,0.5f));
+    
     challengeButton->setAnchorPoint(ccp(0.5f,0.5f));
     challengeButton->setPosition(ccp(size.width/2,size.height * 0.55f));
     challengeButton->setScale(0.5f);
@@ -76,9 +83,17 @@ bool TitleScene::init()
 
     //ランキングボタン
     CCSprite* pRankingImg = CCSprite::create("title/rankbutton.png");
+    pRankingImg->setScale(2.0f);
     CCSprite* pRankingImg_sel = CCSprite::create("title/rankbutton.png");
-    pRankingImg_sel->setScale(1.05f);
+    pRankingImg_sel->setScale(2.05f);
     CCMenuItemSprite* rankingButton = CCMenuItemSprite::create(pRankingImg,pRankingImg_sel, this, menu_selector(TitleScene::moveSceneToRanking));
+
+    pRankingImg->setPosition(ccp(pRankingImg->getContentSize().width * 0.5f,
+                                   pRankingImg->getContentSize().height * 0.5f));
+    pRankingImg->setAnchorPoint(ccp(0.5f,0.5f));
+    pRankingImg_sel->setPosition(pRankingImg->getPosition());
+    pRankingImg_sel->setAnchorPoint(ccp(0.5f,0.5f));
+    
     rankingButton->setAnchorPoint(ccp(0.5f,0.5f));
     rankingButton->setPosition(ccp(size.width/2,size.height * 0.45f));
     rankingButton->setScale(0.5f);
@@ -98,7 +113,7 @@ void TitleScene::NextScene(CCObject*obj)
     sprite->stopAllActions();
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-//    AstExt::NativeCodeAst::hideAst();
+    AstExt::NativeCodeAst::hideAst();
 #endif
     
     SimpleAudioEngine::sharedEngine()->playEffect(DEF_SE_START);
@@ -107,19 +122,7 @@ void TitleScene::NextScene(CCObject*obj)
                                                CCTransitionSlideInR::create(0.25f,TweezeGameScene::scene())
                                                );
 }
-/**
- * ゲームモード
- */
-void TitleScene::moveSceneToGame(CCObject*obj)
-{
-    GameRuleManager::getInstance()->setGameMode(GM_CHALENGE);
-    
-    SimpleAudioEngine::sharedEngine()->playEffect(DEF_SE_START);
-    
-    CCDirector::sharedDirector()->replaceScene(
-                                               CCTransitionSlideInR::create(0.25f,TweezeGameScene::scene())
-                                               );
-}
+
 /**
  * ランキング
  */

@@ -203,11 +203,10 @@ obj/local/armeabi/objs/game_shared/__/__/Classes/TitleScene.o: \
  /Applications/cocos2d-x-2.1.5/cocos2dx/support/data_support/uthash.h \
  /Applications/cocos2d-x-2.1.5/cocos2dx/support/component/CCComponent.h \
  /Applications/cocos2d-x-2.1.5/cocos2dx/support/component/CCComponentContainer.h \
- jni/../../Classes/GameRuleManager.h jni/../../Classes/NumberTenScene.h \
- jni/../../Classes/ButtonFactory.h \
- jni/../../Classes/QuestionCounterNode.h \
- jni/../../Classes/TimeCounterNode.h \
- jni/../../Classes/common/DialogLayer.h jni/../../Classes/RunkingScene.h \
+ jni/../../Classes/Game/TweezeGameScene.h \
+ jni/../../Classes/common/DialogLayer.h \
+ jni/../../Classes/Game/LastHairModel.h \
+ jni/../../Classes/Game/RunkingScene.h \
  /Applications/cocos2d-x-2.1.5/CocosDenshion/android/../include/SimpleAudioEngine.h \
  /Applications/cocos2d-x-2.1.5/CocosDenshion/android/../include/Export.h \
  jni/../../Classes/common/NativeCodeAst.h \
@@ -621,19 +620,13 @@ jni/../../Classes/TitleScene.h:
 
 /Applications/cocos2d-x-2.1.5/cocos2dx/support/component/CCComponentContainer.h:
 
-jni/../../Classes/GameRuleManager.h:
-
-jni/../../Classes/NumberTenScene.h:
-
-jni/../../Classes/ButtonFactory.h:
-
-jni/../../Classes/QuestionCounterNode.h:
-
-jni/../../Classes/TimeCounterNode.h:
+jni/../../Classes/Game/TweezeGameScene.h:
 
 jni/../../Classes/common/DialogLayer.h:
 
-jni/../../Classes/RunkingScene.h:
+jni/../../Classes/Game/LastHairModel.h:
+
+jni/../../Classes/Game/RunkingScene.h:
 
 /Applications/cocos2d-x-2.1.5/CocosDenshion/android/../include/SimpleAudioEngine.h:
 

@@ -10,7 +10,6 @@
 #define __ther_last_hair2dx__GameOverLayer__
 
 #include "cocos2d.h"
-#include "GameRuleManager.h"
 
 class GameOverLayer : public cocos2d::CCLayerColor
 {
@@ -29,7 +28,7 @@ public:
     /**
      * 記録の登録
      */
-    void entoryRecord(GAME_MODE mode,long value);
+    void entoryRecord(long value);
     
     void moveToTitle();
     

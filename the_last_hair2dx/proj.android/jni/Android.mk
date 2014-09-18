@@ -15,6 +15,8 @@ LOCAL_SRC_FILES := hellocpp/main.cpp
 LOCAL_SRC_FILES += $(FILE_LIST:$(LOCAL_PATH)/%=%)
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes                   
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/Game
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/Logo
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/common
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../android/custom
                   

@@ -27,7 +27,6 @@ public:
     CREATE_FUNC(TitleScene);
 
     void NextScene(CCObject*obj);
-    void moveSceneToGame(CCObject*obj);
     void moveSceneToRanking(CCObject*obj);
     
 };

@@ -39,26 +39,20 @@ bool GameOverLayer::init()
     this->setColor(ccc3(0, 0, 0));
     this->setOpacity(0xBF);
     
-    this->m_GameOverString = CCSprite::create("base/game_over_title.png");
-    this->m_GameOverString->setPosition(ccp(size.width * 0.5f,size.height * 0.75f));
-    this->addChild(this->m_GameOverString);
-    
+    CCSprite * back = CCSprite::create("game/house.png");
+    this->addChild(back,0);
+    back->setPosition(ccp(size.width * 0.5f,size.height * 0.5f));
     
     CCMenu * menu = CCMenu::create();
     menu->setPosition(CCPointZero);
     this->addChild(menu);
-
-    //ツイートボタン
-    CCLabelBMFont * labelTweet = CCLabelBMFont::create("[ Tweet ]", "base/little_number2.fnt", 240, kCCTextAlignmentCenter);
-    CCMenuItemLabel * labelTw = CCMenuItemLabel::create(labelTweet, this, menu_selector(GameOverLayer::onTweet));
-    labelTw->setPosition(ccp(size.width * 0.5f,300));
-    menu->addChild(labelTw);
     
     //戻るボタン
-    CCLabelBMFont * labelBM = CCLabelBMFont::create("[ Title ]", "base/little_number2.fnt", 200, kCCTextAlignmentCenter);
-    CCMenuItemLabel * label = CCMenuItemLabel::create(labelBM, this, menu_selector(GameOverLayer::moveToTitle));
+    CCSprite * backNormal = CCSprite::create("game/endbutton.png");
+    CCSprite * backSelect = CCSprite::create("game/endbutton.png");
+    CCMenuItemSprite * label = CCMenuItemSprite::create(backNormal,backSelect, this, menu_selector(GameOverLayer::moveToTitle));
     
-    label->setPosition(ccp(size.width * 0.5f,200));
+    label->setPosition(ccp(size.width * 0.5f,size.height * 0.6f));
     menu->addChild(label);
     
     return true;
@@ -66,7 +60,7 @@ bool GameOverLayer::init()
 /**
  * 記録の登録
  */
-void GameOverLayer::entoryRecord(GAME_MODE mode,long value)
+void GameOverLayer::entoryRecord(long value)
 {
     CCSize size = CCDirector::sharedDirector()->getWinSize();
     
@@ -74,35 +68,19 @@ void GameOverLayer::entoryRecord(GAME_MODE mode,long value)
     
     //文言
     char buff[30];
-    if(mode == GM_CHALENGE)
-    {
-        sprintf(buff,"Q.%2ld",value);
-    }
-    else
-    {
-        sprintf(buff,"%2ld:%02ld",static_cast<long>(value/60),value%60);
-    }
+    sprintf(buff,"%2ld",value);
     
     CCLabelBMFont * recordLabel  = CCLabelBMFont::create(buff, "base/little_number.fnt", 400, kCCTextAlignmentCenter);
     recordLabel->setPosition(ccp(size.width * 0.5f,size.height * 0.5f));
     this->addChild(recordLabel);
     
-    if(GameRuleManager::getInstance()->isNewRecordScore(mode, value))
-    {
-        GameRuleManager::getInstance()->setRankingScore(mode, value);
-
-        //記録更新の効果音
-        SimpleAudioEngine::sharedEngine()->playEffect(DEF_SE_NEW_RECORD);
-    }
-    else
-    {
-        //ゲームオーバーの効果音
-        SimpleAudioEngine::sharedEngine()->playEffect(DEF_SE_GAME_OVER);
-    }
 }
 
 void GameOverLayer::moveToTitle()
 {
+    //戻る音
+    SimpleAudioEngine::sharedEngine()->playEffect(DEF_SE_TITLE_BACK);
+    
     CCDirector::sharedDirector()->replaceScene(CCTransitionSlideInR::create(0.25f, TitleScene::scene()));
 }
 
@@ -112,25 +90,12 @@ void GameOverLayer::moveToTitle()
 void GameOverLayer::onTweet()
 {
     std::string tweetStr;
-    if(GameRuleManager::getInstance()->getGameMode() == GM_CHALENGE )
-    {
-        tweetStr += "[TEN] \'Chalenge Mode\' ";
-    }
-    else
-    {
-        tweetStr += "[TEN]\'Time Trial Mode\' ";
-    }
+
+    tweetStr += "[TEN] \'Chalenge Mode\' ";
 
     //文言
     char buff[30];
-    if(GameRuleManager::getInstance()->getGameMode() == GM_CHALENGE)
-    {
-        sprintf(buff,"Q.%2ld",this->m_score);
-    }
-    else
-    {
-        sprintf(buff,"%2ld:%02ld",static_cast<long>(this->m_score/60),this->m_score%60);
-    }
+    sprintf(buff,"%2ld",this->m_score);
     
     tweetStr += buff;
     tweetStr += " ";

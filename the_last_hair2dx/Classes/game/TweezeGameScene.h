@@ -41,6 +41,20 @@ protected:
     cocos2d::CCLabelTTF * m_LossHairCountLabelMain;
     cocos2d::CCLabelTTF * m_LossHairCountLabelSub;
     
+    /**
+     * コンボヘアーアニメーション
+     */
+    void onAnimationComboHair();
+    
+    /**
+     * 抜けた毛の本数
+     */
+    void countUpHair();
+    
+    /**
+     * ラベルの再表示
+     */
+    void refleshCountLabe();
 public:
     static cocos2d::CCScene* scene();
     
@@ -72,6 +86,11 @@ public:
      * タップキャンセル
      */
     virtual void ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
+    
+    /**
+     * ゲームオーバー
+     */
+    virtual void showGameOverLayer();
     
 };
 #endif /* defined(__ther_last_hair2dx__TweezeGameScene__) */

@@ -10,7 +10,6 @@
 #include "SimpleAudioEngine.h"
 #include "NativeCodeAst.h"
 #include "SoundDef.h"
-#include "GameRuleManager.h"
 #include "GameOverLayer.h"
 
 #define DEF_NAMIHEI_Y_OFFSET (-100)
@@ -18,7 +17,8 @@
 #define DEF_HAIR_Y_OFFSET (200)
 
 #define DEF_FONT_SIZE (64)
-#define DEF_LOSS_LABEL_Y_OFFSET (-100)
+#define DEF_LOSS_LABEL_Y_OFFSET (-150)
+#define DEF_COMBO_LABEL_Y_OFFSET (-200)
 
 #define DEF_HAND_X_OFFSET (0)
 #define DEF_HAND_Y_OFFSET (200)
@@ -113,15 +113,59 @@ bool TweezeGameScene::init()
     
     //音声ファイル読み込み
     SimpleAudioEngine::sharedEngine()->preloadEffect(DEF_SE_GAME_OVER);
-    SimpleAudioEngine::sharedEngine()->preloadEffect(DEF_SE_GOOD);
-    SimpleAudioEngine::sharedEngine()->preloadEffect(DEF_SE_RUSH);
     
     this->setTouchEnabled(true);
     this->setTouchMode(kCCTouchesOneByOne);
     
+    this->refleshCountLabe();
+    
     return true;
 }
 
+/**
+ * コンボヘアーアニメーション
+ */
+void TweezeGameScene::onAnimationComboHair()
+{
+    //毛の抜ける音
+    SimpleAudioEngine::sharedEngine()->playEffect(DEF_SE_COMBO);
+    
+    CCSize size = CCDirector::sharedDirector()->getWinSize();
+    
+    CCSprite * comboString = CCSprite::create("game/umiheicombo.png");
+    this->addChild(comboString,100);
+    comboString->setPosition(ccp(size.width * 0.5f,size.height + DEF_COMBO_LABEL_Y_OFFSET));
+    
+    CCArray * seq1 = CCArray::create();
+    CCArray * seq2 = CCArray::create();
+    seq1->addObject(CCMoveBy::create(2.0f, ccp(0,40)));
+    seq1->addObject(CCCallFunc::create(comboString, callfunc_selector(CCSprite::removeFromParent)));
+    seq2->addObject(CCFadeOut::create(2.0f));
+    comboString->runAction(CCSpawn::create(CCSequence::create(seq1),CCSequence::create(seq2)));
+}
+
+/**
+ * 抜けた毛の本数
+ */
+void TweezeGameScene::countUpHair()
+{
+    //通常の毛
+    this->m_score++;
+    
+    this->refleshCountLabe();
+
+}
+/**
+ * ラベルの再表示
+ */
+void TweezeGameScene::refleshCountLabe()
+{
+    char buff[30] = "";
+    sprintf(buff, "%ld本抜き",this->m_score);
+    this->m_LossHairCountLabelMain->setString(buff);
+    this->m_LossHairCountLabelSub->setString(buff);
+    
+}
 
 /**
  * タップ開始
@@ -132,6 +176,10 @@ bool TweezeGameScene::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *p
     
     this->m_handMove = 0.0f;
     this->m_lossFlg = false;
+
+    CCSize size = CCDirector::sharedDirector()->getWinSize();
+    this->m_Hand->setPosition(ccp(size.width + DEF_HAND_X_OFFSET,
+                                  size.height*0.5f + DEF_HAND_Y_OFFSET + this->m_handMove));
     
     return true;
 }
@@ -145,15 +193,40 @@ void TweezeGameScene::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *p
     CCPoint moveVec = pTouch->getLocation() - pTouch->getStartLocation();
     
     this->m_handMove = moveVec.y;
+    if(this->m_handMove < 0 ) this->m_handMove = 0;
     
     this->m_Hand->setPosition(ccp(size.width + DEF_HAND_X_OFFSET,
                                   size.height*0.5f + DEF_HAND_Y_OFFSET + this->m_handMove));
     
+    //ゲームオーバー判定
+    if(rand()%255 == 0)
+    {
+        CCLOG("GAME_OVER");
+        this->showGameOverLayer();
+    }
+    
     //毛の抜ける範囲
-    if(this->m_handMove > DEF_LOSS_OF_LENGTH)
+    if(this->m_lossFlg == false && this->m_handMove > DEF_LOSS_OF_LENGTH)
     {
         this->m_lossFlg = true;
         this->m_lastHair->resetSize();
+
+        //毛の抜ける音
+        SimpleAudioEngine::sharedEngine()->playEffect(DEF_SE_LOSS_HAIR);
+        
+        if(HT_ONE == this->m_lastHair->getHairType())
+        {
+            this->countUpHair();
+        }
+        else
+        {
+            //２本毛
+            this->m_score*=2;
+            
+            this->refleshCountLabe();
+            
+            this->onAnimationComboHair();
+        }
     }
     
     if(this->m_lossFlg)
@@ -179,6 +252,14 @@ void TweezeGameScene::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *p
     {
         //毛が抜けている
         
+        if(rand()%8 == 0)
+        {
+            this->m_lastHair->setHairType(HT_TWO);
+        }
+        else
+        {
+            this->m_lastHair->setHairType(HT_ONE);
+        }
         //毛が生えてくる
         this->m_lastHair->onActionHairGrows();
         this->m_lastHair->setPosition(ccpAdd(this->m_GroundFother->getPosition(),
@@ -188,6 +269,9 @@ void TweezeGameScene::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *p
     {
         //毛が抜けていない
         this->m_lastHair->onActionCurlyHair();
+
+        //毛の抜ける音
+        SimpleAudioEngine::sharedEngine()->playEffect(DEF_SE_MISS);
     }
     
     this->m_handMove = 0.0f;
@@ -201,4 +285,16 @@ void TweezeGameScene::ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEven
     
 }
 
+/**
+ * ゲームオーバー
+ */
+void TweezeGameScene::showGameOverLayer()
+{
+    this->setTouchEnabled(false);
+    GameOverLayer *Over = GameOverLayer::create();
+    this->addChild(Over,100000);
+
+    //ゲームオーバーの音
+    SimpleAudioEngine::sharedEngine()->playEffect(DEF_SE_GAME_OVER);
+}
 

@@ -26,11 +26,6 @@ public:
     virtual void makeChalengeRanking();
     
     /**
-     * トライアルモード用のランキング
-     */
-    virtual void makeTimeTrialRanking();
-    
-    /**
      * コンストラクタ
      */
     RunkingScene();
@@ -43,7 +38,6 @@ public:
     
     
     void chengeViewChalenge(cocos2d::CCObject sender);
-    void chengeViewTimeTrial(cocos2d::CCObject sender);
     /**
      * メインメニューに戻る
      */
