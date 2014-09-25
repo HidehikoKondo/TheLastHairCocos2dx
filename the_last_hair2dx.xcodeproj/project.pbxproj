@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		57055F2718B0A4D200EEC416 /* base in Resources */ = {isa = PBXBuildFile; fileRef = 57055F2618B0A4D200EEC416 /* base */; };
 		57055F2918B0A56A00EEC416 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57055F2818B0A56A00EEC416 /* Info.plist */; };
 		57055F2D18B30A2000EEC416 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57055F2C18B30A2000EEC416 /* Images.xcassets */; };
 		57055F2F18B5265900EEC416 /* logo in Resources */ = {isa = PBXBuildFile; fileRef = 57055F2E18B5265900EEC416 /* logo */; };
@@ -17,7 +16,6 @@
 		577C57E1193F818C00CBEBE6 /* sound in Resources */ = {isa = PBXBuildFile; fileRef = 577C57E0193F818C00CBEBE6 /* sound */; };
 		578FBFA11965AD5700448379 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578FBF9F1965AD5700448379 /* TitleScene.cpp */; };
 		578FBFA51969731300448379 /* TweezeGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578FBFA31969731300448379 /* TweezeGameScene.cpp */; };
-		578FBFA71970D84100448379 /* button in Resources */ = {isa = PBXBuildFile; fileRef = 578FBFA61970D84100448379 /* button */; };
 		579F7AB619C466A600F0BD61 /* game in Resources */ = {isa = PBXBuildFile; fileRef = 579F7AB519C466A600F0BD61 /* game */; };
 		579F7AB919C4761800F0BD61 /* LastHairModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579F7AB719C4761800F0BD61 /* LastHairModel.cpp */; };
 		57AAACA4185EBB3600092891 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57AAACA3185EBB3600092891 /* QuartzCore.framework */; };
@@ -285,7 +283,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		57055F2618B0A4D200EEC416 /* base */ = {isa = PBXFileReference; lastKnownFileType = folder; name = base; path = the_last_hair2dx/Resources/base; sourceTree = SOURCE_ROOT; };
 		57055F2818B0A56A00EEC416 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = the_last_hair2dx/Resources/Info.plist; sourceTree = SOURCE_ROOT; };
 		57055F2C18B30A2000EEC416 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		57055F2E18B5265900EEC416 /* logo */ = {isa = PBXFileReference; lastKnownFileType = folder; name = logo; path = the_last_hair2dx/Resources/logo; sourceTree = SOURCE_ROOT; };
@@ -301,7 +298,6 @@
 		578FBFA01965AD5700448379 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		578FBFA31969731300448379 /* TweezeGameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TweezeGameScene.cpp; sourceTree = "<group>"; };
 		578FBFA41969731300448379 /* TweezeGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweezeGameScene.h; sourceTree = "<group>"; };
-		578FBFA61970D84100448379 /* button */ = {isa = PBXFileReference; lastKnownFileType = folder; path = button; sourceTree = "<group>"; };
 		5798D941193BAE2C00111632 /* NativeCodeAst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeCodeAst.h; sourceTree = "<group>"; };
 		579F7AB519C466A600F0BD61 /* game */ = {isa = PBXFileReference; lastKnownFileType = folder; path = game; sourceTree = "<group>"; };
 		579F7AB719C4761800F0BD61 /* LastHairModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LastHairModel.cpp; sourceTree = "<group>"; };
@@ -986,11 +982,9 @@
 			children = (
 				579F7AB519C466A600F0BD61 /* game */,
 				570A75441992923B00B8144F /* title */,
-				578FBFA61970D84100448379 /* button */,
 				577C57E0193F818C00CBEBE6 /* sound */,
 				57055F2E18B5265900EEC416 /* logo */,
 				57055F2818B0A56A00EEC416 /* Info.plist */,
-				57055F2618B0A4D200EEC416 /* base */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -2208,9 +2202,7 @@
 				57055F2D18B30A2000EEC416 /* Images.xcassets in Resources */,
 				579F7AB619C466A600F0BD61 /* game in Resources */,
 				57055F2F18B5265900EEC416 /* logo in Resources */,
-				578FBFA71970D84100448379 /* button in Resources */,
 				57AAAD69185EBB3700092891 /* ChangeLog in Resources */,
-				57055F2718B0A4D200EEC416 /* base in Resources */,
 				57055F2918B0A56A00EEC416 /* Info.plist in Resources */,
 				57AAAEDD185EBB3900092891 /* project.pbxproj in Resources */,
 				577C57E1193F818C00CBEBE6 /* sound in Resources */,

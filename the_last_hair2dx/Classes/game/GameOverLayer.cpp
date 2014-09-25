@@ -93,7 +93,7 @@ bool GameOverLayer::init(unsigned long score)
     HiScoreLabel->setPosition(ccp(size.width * 0.5f,size.height * 0.7f));
     layer->addChild(HiScoreLabel,1);
     //今回の記録
-    sprintf(buff, "今回記録：%lu本抜き",hiscore);
+    sprintf(buff, "今回記録：%lu本抜き",score);
     CCLabelTTF * playScoreLabel = CCLabelTTF::create(buff, "Arial", 40);
     playScoreLabel->setPosition(ccp(size.width * 0.5f,size.height * 0.625f));
     layer->addChild(playScoreLabel,1);

@@ -101,12 +101,12 @@ bool TweezeGameScene::init()
     this->m_Hand->setVisible(false);
     
     //抜いた数
-    this->m_LossHairCountLabelMain = CCLabelTTF::create("999999999 本抜き ", "Arial", DEF_FONT_SIZE,CCSizeMake(640,DEF_FONT_SIZE*1.05),kCCTextAlignmentRight);
+    this->m_LossHairCountLabelMain = CCLabelTTF::create("999999999 本抜き ", "Arial", DEF_FONT_SIZE,CCSizeMake(640,DEF_FONT_SIZE*1.15),kCCTextAlignmentRight);
     this->m_LossHairCountLabelMain->setColor(ccc3(0x00, 0x00, 0x00));
     this->addChild(this->m_LossHairCountLabelMain, 110);
     this->m_LossHairCountLabelMain->setAnchorPoint(ccp(1.0,0.0));
     this->m_LossHairCountLabelMain->setPosition(ccp(size.width - 3 ,size.height + DEF_LOSS_LABEL_Y_OFFSET + 3));
-    this->m_LossHairCountLabelSub = CCLabelTTF::create("999999999 本抜き ", "Arial", DEF_FONT_SIZE,CCSizeMake(640,DEF_FONT_SIZE*1.05),kCCTextAlignmentRight);
+    this->m_LossHairCountLabelSub = CCLabelTTF::create("999999999 本抜き ", "Arial", DEF_FONT_SIZE,CCSizeMake(640,DEF_FONT_SIZE*1.15),kCCTextAlignmentRight);
     this->addChild(this->m_LossHairCountLabelSub, 100);
     this->m_LossHairCountLabelSub->setAnchorPoint(ccp(1.0,0.0));
     this->m_LossHairCountLabelSub->setPosition(ccp(size.width,size.height + DEF_LOSS_LABEL_Y_OFFSET));
@@ -141,7 +141,7 @@ void TweezeGameScene::onAnimationComboHair()
     seq1->addObject(CCMoveBy::create(2.0f, ccp(0,40)));
     seq1->addObject(CCCallFunc::create(comboString, callfunc_selector(CCSprite::removeFromParent)));
     seq2->addObject(CCFadeOut::create(2.0f));
-    comboString->runAction(CCSpawn::create(CCSequence::create(seq1),CCSequence::create(seq2)));
+    comboString->runAction(CCSpawn::createWithTwoActions(CCSequence::create(seq1),CCSequence::create(seq2)));
 }
 
 /**
