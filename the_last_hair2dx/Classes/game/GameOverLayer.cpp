@@ -28,7 +28,22 @@ GameOverLayer::~GameOverLayer()
     
 }
 
-bool GameOverLayer::init()
+GameOverLayer * GameOverLayer::create(unsigned long score)
+{
+    GameOverLayer * ret = new GameOverLayer();
+    if(ret && ret->init(score))
+    {
+        ret->autorelease();
+    }
+    else
+    {
+        delete ret;
+        ret = NULL;
+    }
+    return ret;
+}
+
+bool GameOverLayer::init(unsigned long score)
 {
     if(!CCLayerColor::init())
     {
@@ -43,16 +58,52 @@ bool GameOverLayer::init()
     this->addChild(back,0);
     back->setPosition(ccp(size.width * 0.5f,size.height * 0.5f));
     
+    CCLayer * layer = CCLayer::create();
+    this->addChild(layer, 1);
+    layer->setPosition(ccp(0,-size.height));
+    layer->runAction(CCSequence::create(CCMoveTo::create(1.0f, ccp(0,0)),NULL));
+    
+    //馬鹿モーン
+    CCSprite * bakamon = CCSprite::create("game/bakamon.png");
+    this->addChild(bakamon,1);
+    bakamon->setPosition(ccp(size.width * 0.5f,size.height * 0.4f));
+    bakamon->setScale(0.5f);
+    CCArray * seq1 = CCArray::create();
+    CCArray * seq2 = CCArray::create();
+    seq1->addObject(CCMoveTo::create(0.5f, ccp(size.width * 0.5f,size.height * 0.8f)));
+    seq2->addObject(CCScaleTo::create(0.5f, 1.0f));
+    bakamon->runAction(CCSpawn::createWithTwoActions(CCSequence::create(seq1),CCSequence::create(seq2)));
+    
     CCMenu * menu = CCMenu::create();
     menu->setPosition(CCPointZero);
-    this->addChild(menu);
+    layer->addChild(menu);
+
+    //ハイスコアの取得
+    unsigned long hiscore = CCUserDefault::sharedUserDefault()->getIntegerForKey("HiScore", score);
+
+    if(hiscore <= score)
+    {
+        hiscore = score;
+        CCUserDefault::sharedUserDefault()->setIntegerForKey("HiScore", score);
+    }
+    char buff[50] = "";
+    //最高記録
+    sprintf(buff, "最高記録：%lu本抜き",hiscore);
+    CCLabelTTF * HiScoreLabel = CCLabelTTF::create(buff, "Arial", 40);
+    HiScoreLabel->setPosition(ccp(size.width * 0.5f,size.height * 0.7f));
+    layer->addChild(HiScoreLabel,1);
+    //今回の記録
+    sprintf(buff, "今回記録：%lu本抜き",hiscore);
+    CCLabelTTF * playScoreLabel = CCLabelTTF::create(buff, "Arial", 40);
+    playScoreLabel->setPosition(ccp(size.width * 0.5f,size.height * 0.625f));
+    layer->addChild(playScoreLabel,1);
     
     //戻るボタン
     CCSprite * backNormal = CCSprite::create("game/endbutton.png");
     CCSprite * backSelect = CCSprite::create("game/endbutton.png");
     CCMenuItemSprite * label = CCMenuItemSprite::create(backNormal,backSelect, this, menu_selector(GameOverLayer::moveToTitle));
     
-    label->setPosition(ccp(size.width * 0.5f,size.height * 0.6f));
+    label->setPosition(ccp(size.width * 0.5f,size.height * 0.55f));
     menu->addChild(label);
     
     return true;

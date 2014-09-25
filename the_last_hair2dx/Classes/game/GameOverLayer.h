@@ -22,8 +22,8 @@ public:
     GameOverLayer();
     virtual ~GameOverLayer();
     
-    CREATE_FUNC(GameOverLayer);
-    virtual bool init();
+    static GameOverLayer * create(unsigned long score);
+    virtual bool init(unsigned long score);
 
     /**
      * 記録の登録

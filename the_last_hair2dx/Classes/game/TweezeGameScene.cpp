@@ -112,7 +112,7 @@ bool TweezeGameScene::init()
     this->m_LossHairCountLabelSub->setPosition(ccp(size.width,size.height + DEF_LOSS_LABEL_Y_OFFSET));
     
     //音声ファイル読み込み
-    SimpleAudioEngine::sharedEngine()->preloadEffect(DEF_SE_GAME_OVER);
+    SimpleAudioEngine::sharedEngine()->preloadEffect(DEF_SE_COMBO);
     
     this->setTouchEnabled(true);
     this->setTouchMode(kCCTouchesOneByOne);
@@ -193,7 +193,7 @@ void TweezeGameScene::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *p
     CCPoint moveVec = pTouch->getLocation() - pTouch->getStartLocation();
     
     this->m_handMove = moveVec.y;
-    if(this->m_handMove < 0 ) this->m_handMove = 0;
+    if(this->m_handMove < -100 ) this->m_handMove = -100;
     
     this->m_Hand->setPosition(ccp(size.width + DEF_HAND_X_OFFSET,
                                   size.height*0.5f + DEF_HAND_Y_OFFSET + this->m_handMove));
@@ -291,7 +291,7 @@ void TweezeGameScene::ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEven
 void TweezeGameScene::showGameOverLayer()
 {
     this->setTouchEnabled(false);
-    GameOverLayer *Over = GameOverLayer::create();
+    GameOverLayer *Over = GameOverLayer::create(this->m_score);
     this->addChild(Over,100000);
 
     //ゲームオーバーの音
