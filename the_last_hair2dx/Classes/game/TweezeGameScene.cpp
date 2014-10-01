@@ -12,16 +12,18 @@
 #include "SoundDef.h"
 #include "GameOverLayer.h"
 
-#define DEF_NAMIHEI_Y_OFFSET (-100)
+//波平の高さオフセット(中心から)
+#define DEF_NAMIHEI_Y_OFFSET (-150)
 
-#define DEF_HAIR_Y_OFFSET (200)
+//波平の毛の高さオフセット(中心から)
+#define DEF_HAIR_Y_OFFSET (250)
 
 #define DEF_FONT_SIZE (64)
 #define DEF_LOSS_LABEL_Y_OFFSET (-150)
 #define DEF_COMBO_LABEL_Y_OFFSET (-200)
 
 #define DEF_HAND_X_OFFSET (0)
-#define DEF_HAND_Y_OFFSET (200)
+#define DEF_HAND_Y_OFFSET (250)
 #define DEF_HAND_SCALE_RATE (1.05f)
 
 #define DEF_LOSS_OF_LENGTH (240.0f)
@@ -252,7 +254,7 @@ void TweezeGameScene::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *p
     {
         //毛が抜けている
         
-        if(rand()%8 == 0)
+        if(rand()%32 == 0)
         {
             this->m_lastHair->setHairType(HT_TWO);
         }

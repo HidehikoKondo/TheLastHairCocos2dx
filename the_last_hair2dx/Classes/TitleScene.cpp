@@ -12,6 +12,7 @@
 #include "SimpleAudioEngine.h"
 #include "NativeCodeAst.h"
 #include "SoundDef.h"
+#include "AppCCloudPlugin.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -130,9 +131,12 @@ void TitleScene::moveSceneToRanking(CCObject*obj)
 {
     SimpleAudioEngine::sharedEngine()->playEffect(DEF_SE_START);
     
-    CCDirector::sharedDirector()->replaceScene(
-                                               CCTransitionSlideInR::create(0.25f,RunkingScene::scene())
-                                               );
+//    CCDirector::sharedDirector()->replaceScene(
+//                                               CCTransitionSlideInR::create(0.25f,RunkingScene::scene())
+//                                               );
+    
+    //リーダーボードの表示
+    AppCCloudPlugin::Gamers::showGamersView();
 }
 
 void TitleScene::menuCloseCallback(CCObject* pSender)

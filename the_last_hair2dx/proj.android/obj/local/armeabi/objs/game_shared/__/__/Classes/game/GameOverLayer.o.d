@@ -207,7 +207,9 @@ obj/local/armeabi/objs/game_shared/__/__/Classes/game/GameOverLayer.o: \
  jni/../../Classes/TitleScene.h jni/../../Classes/common/SoundDef.h \
  /Applications/cocos2d-x-2.1.5/CocosDenshion/android/../include/SimpleAudioEngine.h \
  /Applications/cocos2d-x-2.1.5/CocosDenshion/android/../include/Export.h \
- jni/../../Classes/common/NativeTweet.h
+ jni/../../Classes/common/NativeTweet.h \
+ jni/../../Classes/common/AppCCloudPlugin.h \
+ /Applications/cocos2d-x-2.1.5/extensions/spine/Json.h
 
 jni/../../Classes/game/GameOverLayer.h:
 
@@ -626,3 +628,7 @@ jni/../../Classes/common/SoundDef.h:
 /Applications/cocos2d-x-2.1.5/CocosDenshion/android/../include/Export.h:
 
 jni/../../Classes/common/NativeTweet.h:
+
+jni/../../Classes/common/AppCCloudPlugin.h:
+
+/Applications/cocos2d-x-2.1.5/extensions/spine/Json.h:

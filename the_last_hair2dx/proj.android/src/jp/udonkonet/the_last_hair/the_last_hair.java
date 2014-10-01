@@ -25,6 +25,7 @@ package jp.udonkonet.the_last_hair;
 import com.google.android.gms.ads.*;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
+import net.app_c.cloud.plugin.c2dx.*;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
@@ -37,7 +38,7 @@ import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-public class the_last_hair extends Cocos2dxActivity{
+public class the_last_hair extends AppCCloudActivity{
 
 	private static the_last_hair _activity = null;
 	private static AdView adView;

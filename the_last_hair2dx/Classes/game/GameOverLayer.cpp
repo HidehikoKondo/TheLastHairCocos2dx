@@ -11,6 +11,11 @@
 #include "SoundDef.h"
 #include "SimpleAudioEngine.h"
 #include "NativeTweet.h"
+#include "AppCCloudPlugin.h"
+
+
+#define DEF_LEADER_BOARD   (1108)
+
 
 #define DEF_APP_DL_URL_ANDROID ("http://goo.gl/VKAoCX")
 
@@ -85,6 +90,9 @@ bool GameOverLayer::init(unsigned long score)
     {
         hiscore = score;
         CCUserDefault::sharedUserDefault()->setIntegerForKey("HiScore", score);
+        
+        //ネットワーク上にデータ送信
+        AppCCloudPlugin::Gamers::setLeaderBoard(DEF_LEADER_BOARD, static_cast<int>(hiscore));
     }
     char buff[50] = "";
     //最高記録
