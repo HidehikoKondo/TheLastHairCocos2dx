@@ -42,7 +42,7 @@
         
         <!-- AppC Core Setting Start -->
         <meta-data android:name="appc_media_key"
-                   android:value="07899191eb703f79a82a28a93938a0ae8dd7fe4f" />
+                   android:value="506ee167d7dfb5bc658b3d4bdd7ac7e86c32b79f" />
 
         <meta-data android:name="com.google.android.gms.version"
                    android:value="@integer/google_play_services_version" />

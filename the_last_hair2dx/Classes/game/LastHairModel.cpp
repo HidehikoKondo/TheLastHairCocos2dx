@@ -76,14 +76,14 @@ void LastHairModel::onActionCurlyHair()
     this->m_HairSprite->stopAllActions();
     
     CCArray * seq = CCArray::create();
-    seq->addObject(CCScaleTo::create(0.07f, DEF_DEFAULT_HAIR_WIDTH_RATE,0.25f));
-    seq->addObject(CCScaleTo::create(0.07f, DEF_DEFAULT_HAIR_WIDTH_RATE,DEF_DEFAULT_HAIR_HEIGHT_RATE));
-    seq->addObject(CCScaleTo::create(0.07f, DEF_DEFAULT_HAIR_WIDTH_RATE,0.25f));
-    seq->addObject(CCScaleTo::create(0.07f, DEF_DEFAULT_HAIR_WIDTH_RATE,DEF_DEFAULT_HAIR_HEIGHT_RATE));
-    seq->addObject(CCScaleTo::create(0.07f, DEF_DEFAULT_HAIR_WIDTH_RATE,0.25f));
-    seq->addObject(CCScaleTo::create(0.07f, DEF_DEFAULT_HAIR_WIDTH_RATE,DEF_DEFAULT_HAIR_HEIGHT_RATE));
-    seq->addObject(CCScaleTo::create(0.07f, DEF_DEFAULT_HAIR_WIDTH_RATE,0.25f));
-    seq->addObject(CCScaleTo::create(0.07f, DEF_DEFAULT_HAIR_WIDTH_RATE,DEF_DEFAULT_HAIR_HEIGHT_RATE));
+    seq->addObject(CCScaleTo::create(0.06f, DEF_DEFAULT_HAIR_WIDTH_RATE,0.25f));
+    seq->addObject(CCScaleTo::create(0.06f, DEF_DEFAULT_HAIR_WIDTH_RATE,DEF_DEFAULT_HAIR_HEIGHT_RATE));
+    seq->addObject(CCScaleTo::create(0.06f, DEF_DEFAULT_HAIR_WIDTH_RATE,0.25f));
+    seq->addObject(CCScaleTo::create(0.06f, DEF_DEFAULT_HAIR_WIDTH_RATE,DEF_DEFAULT_HAIR_HEIGHT_RATE));
+    seq->addObject(CCScaleTo::create(0.06f, DEF_DEFAULT_HAIR_WIDTH_RATE,0.25f));
+    seq->addObject(CCScaleTo::create(0.06f, DEF_DEFAULT_HAIR_WIDTH_RATE,DEF_DEFAULT_HAIR_HEIGHT_RATE));
+    seq->addObject(CCScaleTo::create(0.06f, DEF_DEFAULT_HAIR_WIDTH_RATE,0.25f));
+    seq->addObject(CCScaleTo::create(0.06f, DEF_DEFAULT_HAIR_WIDTH_RATE,DEF_DEFAULT_HAIR_HEIGHT_RATE));
     this->m_HairSprite->runAction(CCSequence::create(seq));
 }
 
@@ -103,7 +103,7 @@ void LastHairModel::onActionHairGrows()
     this->m_HairSprite->setScaleY(0);
     
     CCArray * seq = CCArray::create();
-    seq->addObject(CCScaleTo::create(0.5f, DEF_DEFAULT_HAIR_WIDTH_RATE,DEF_DEFAULT_HAIR_HEIGHT_RATE));
+    seq->addObject(CCScaleTo::create(0.3f, DEF_DEFAULT_HAIR_WIDTH_RATE,DEF_DEFAULT_HAIR_HEIGHT_RATE));
     this->m_HairSprite->runAction(CCSequence::create(seq));
 }
 
