@@ -140,5 +140,9 @@ public class NativeCodeAst {
         // IconLoaderのインスタンスを参照できるように、このクラスのインスタンスを保持しておきます。
          _iconLoader = iconLoader;
     }
-
+    
+    public static void showInterstitialJni()
+    {
+    	Log.d("Interstitial","JNIインタースティシャル");
+    }
 }

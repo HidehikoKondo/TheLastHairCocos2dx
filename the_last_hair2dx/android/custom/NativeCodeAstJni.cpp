@@ -34,4 +34,12 @@ void NativeCodeAstJni::initAstJni()
         t.env->DeleteLocalRef(t.classID);
     }
 }
-        
+
+void NativeCodeAstJni::showInterstitialJni()
+{
+    JniMethodInfo t;
+    if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "showInterstitialJni", "()V")) {
+        t.env->CallStaticVoidMethod(t.classID, t.methodID);
+        t.env->DeleteLocalRef(t.classID);
+    }
+}

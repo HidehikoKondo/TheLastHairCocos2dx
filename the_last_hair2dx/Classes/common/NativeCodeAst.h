@@ -11,6 +11,7 @@ namespace AstExt {
         static void initAst();
         static void showAst();
         static void hideAst();
+        static void showInterstitial();
 #endif
         
     };

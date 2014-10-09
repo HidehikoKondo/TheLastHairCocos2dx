@@ -16,4 +16,8 @@ namespace AstExt
     {
         ::NativeCodeAstJni::hideAstJni();
     }
+    void NativeCodeAst::showInterstitial()
+    {
+        ::NativeCodeAstJni::showInterstitialJni();
+    }
 }

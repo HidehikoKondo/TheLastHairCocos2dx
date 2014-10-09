@@ -12,16 +12,17 @@
 #include "SimpleAudioEngine.h"
 #include "NativeTweet.h"
 #include "AppCCloudPlugin.h"
+#include "NativeCodeAst.h"
 
 
 #define DEF_LEADER_BOARD   (1108)
-
 
 #define DEF_APP_DL_URL_ANDROID ("http://goo.gl/VKAoCX")
 
 USING_NS_CC;
 
 using namespace CocosDenshion;
+using namespace AstExt;
 
 GameOverLayer::GameOverLayer()
 :m_score(0)
@@ -90,7 +91,7 @@ bool GameOverLayer::init(unsigned long score)
     {
         hiscore = score;
         CCUserDefault::sharedUserDefault()->setIntegerForKey("HiScore", score);
-        
+
         //ネットワーク上にデータ送信
         AppCCloudPlugin::Gamers::setLeaderBoard(DEF_LEADER_BOARD, static_cast<int>(hiscore));
     }
@@ -113,6 +114,12 @@ bool GameOverLayer::init(unsigned long score)
     
     label->setPosition(ccp(size.width * 0.5f,size.height * 0.55f));
     menu->addChild(label);
+    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    CCLog("ゲームオーバー　インタースティシャル");
+    AstExt::NativeCodeAst::showInterstitial();
+#endif
+    
     
     return true;
 }

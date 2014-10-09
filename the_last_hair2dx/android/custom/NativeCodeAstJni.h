@@ -11,4 +11,5 @@ public:
     static void initAstJni();
     static void showAstJni();
     static void hideAstJni();
+    static void showInterstitialJni();
 };
