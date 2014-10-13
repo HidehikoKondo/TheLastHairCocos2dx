@@ -11,6 +11,7 @@
 #include "RunkingScene.h"
 #include "SimpleAudioEngine.h"
 #include "NativeCodeAst.h"
+#include "NativeCodeAdmob.h"
 #include "SoundDef.h"
 #include "AppCCloudPlugin.h"
 

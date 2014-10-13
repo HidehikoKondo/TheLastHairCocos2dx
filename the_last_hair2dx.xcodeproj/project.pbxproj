@@ -981,6 +981,7 @@
 		57B4057F19DC6753007E5AC1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		57C0DB3B19A3BE3D00DB7D31 /* GameOverLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverLayer.cpp; sourceTree = "<group>"; };
 		57C0DB3C19A3BE3D00DB7D31 /* GameOverLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverLayer.h; sourceTree = "<group>"; };
+		9ECD17A519EBBA9F00F7ABC1 /* NativeCodeAdmob.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeCodeAdmob.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1031,6 +1032,7 @@
 				57B4057919DC6523007E5AC1 /* AppCCloudPlugin.h */,
 				57B4057A19DC6523007E5AC1 /* AppCCloudPlugin.mm */,
 				5798D941193BAE2C00111632 /* NativeCodeAst.h */,
+				9ECD17A519EBBA9F00F7ABC1 /* NativeCodeAdmob.h */,
 				577C57E2193F830100CBEBE6 /* SoundDef.h */,
 				5777437819A9C1FE00A5A779 /* NativeTweet.h */,
 				5777437919ACFDDF00A5A779 /* DialogLayer.cpp */,

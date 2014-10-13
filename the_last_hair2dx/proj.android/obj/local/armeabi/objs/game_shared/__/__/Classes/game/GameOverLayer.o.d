@@ -210,7 +210,8 @@ obj/local/armeabi/objs/game_shared/__/__/Classes/game/GameOverLayer.o: \
  jni/../../Classes/common/NativeTweet.h \
  jni/../../Classes/common/AppCCloudPlugin.h \
  /Applications/cocos2d-x-2.1.5/extensions/spine/Json.h \
- jni/../../Classes/common/NativeCodeAst.h
+ jni/../../Classes/common/NativeCodeAst.h \
+ jni/../../Classes/common/NativeCodeAdmob.h
 
 jni/../../Classes/game/GameOverLayer.h:
 
@@ -635,3 +636,5 @@ jni/../../Classes/common/AppCCloudPlugin.h:
 /Applications/cocos2d-x-2.1.5/extensions/spine/Json.h:
 
 jni/../../Classes/common/NativeCodeAst.h:
+
+jni/../../Classes/common/NativeCodeAdmob.h:

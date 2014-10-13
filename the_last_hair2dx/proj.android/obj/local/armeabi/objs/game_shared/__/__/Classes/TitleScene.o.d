@@ -210,6 +210,7 @@ obj/local/armeabi/objs/game_shared/__/__/Classes/TitleScene.o: \
  /Applications/cocos2d-x-2.1.5/CocosDenshion/android/../include/SimpleAudioEngine.h \
  /Applications/cocos2d-x-2.1.5/CocosDenshion/android/../include/Export.h \
  jni/../../Classes/common/NativeCodeAst.h \
+ jni/../../Classes/common/NativeCodeAdmob.h \
  jni/../../Classes/common/SoundDef.h \
  jni/../../Classes/common/AppCCloudPlugin.h \
  /Applications/cocos2d-x-2.1.5/extensions/spine/Json.h
@@ -635,6 +636,8 @@ jni/../../Classes/Game/RunkingScene.h:
 /Applications/cocos2d-x-2.1.5/CocosDenshion/android/../include/Export.h:
 
 jni/../../Classes/common/NativeCodeAst.h:
+
+jni/../../Classes/common/NativeCodeAdmob.h:
 
 jni/../../Classes/common/SoundDef.h:
 

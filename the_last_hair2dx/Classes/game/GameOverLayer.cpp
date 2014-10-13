@@ -13,7 +13,7 @@
 #include "NativeTweet.h"
 #include "AppCCloudPlugin.h"
 #include "NativeCodeAst.h"
-
+#include "NativeCodeAdmob.h"
 
 #define DEF_LEADER_BOARD   (1108)
 
@@ -115,10 +115,6 @@ bool GameOverLayer::init(unsigned long score)
     label->setPosition(ccp(size.width * 0.5f,size.height * 0.55f));
     menu->addChild(label);
     
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    CCLog("ゲームオーバー　インタースティシャル");
-    AstExt::NativeCodeAst::showInterstitial();
-#endif
     
     
     return true;
@@ -144,8 +140,20 @@ void GameOverLayer::entoryRecord(long value)
 
 void GameOverLayer::moveToTitle()
 {
+    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    CCLog("ゲームオーバー　インタースティシャル表示");
+    AdmobExt::NativeCodeAdmob::showInterstitial();
+#endif
+    
     //戻る音
     SimpleAudioEngine::sharedEngine()->playEffect(DEF_SE_TITLE_BACK);
+
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    CCLog("ゲームオーバー　インタースティシャルロード");
+    AdmobExt::NativeCodeAdmob::loadInterstitial();
+#endif
     
     CCDirector::sharedDirector()->replaceScene(CCTransitionSlideInR::create(0.25f, TitleScene::scene()));
 }
