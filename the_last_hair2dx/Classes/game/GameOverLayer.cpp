@@ -15,7 +15,7 @@
 #include "NativeCodeAst.h"
 #include "NativeCodeAdmob.h"
 
-#define DEF_LEADER_BOARD   (1108)
+#define DEF_LEADER_BOARD   (1129)
 
 #define DEF_APP_DL_URL_ANDROID ("http://goo.gl/VKAoCX")
 
