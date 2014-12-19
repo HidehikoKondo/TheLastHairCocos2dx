@@ -1,5 +1,5 @@
 APPNAME="number_ten"
-NDK_ROOT="/Applications/android-ndk-r8e"
+NDK_ROOT="/Applications/android-ndk-r10c"
 
 # options
 
@@ -38,7 +38,7 @@ fi
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # ... use paths relative to current directory
-COCOS2DX_ROOT="/Applications/cocos2d-x-2.1.5"
+COCOS2DX_ROOT="/Applications/cocos2d-x-2.2.6"
 APP_ROOT="$DIR/.."
 APP_ANDROID_ROOT="$DIR"
 

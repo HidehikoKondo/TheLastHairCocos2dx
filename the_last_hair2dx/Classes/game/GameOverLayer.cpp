@@ -85,12 +85,12 @@ bool GameOverLayer::init(unsigned long score)
     layer->addChild(menu);
 
     //ハイスコアの取得
-    unsigned long hiscore = CCUserDefault::sharedUserDefault()->getIntegerForKey("HiScore", score);
+    unsigned long hiscore = CCUserDefault::sharedUserDefault()->getIntegerForKey("HiScore", (int)score);
 
     if(hiscore <= score)
     {
         hiscore = score;
-        CCUserDefault::sharedUserDefault()->setIntegerForKey("HiScore", score);
+        CCUserDefault::sharedUserDefault()->setIntegerForKey("HiScore", (int)score);
 
         //ネットワーク上にデータ送信
         AppCCloudPlugin::Gamers::setLeaderBoard(DEF_LEADER_BOARD, static_cast<int>(hiscore));
