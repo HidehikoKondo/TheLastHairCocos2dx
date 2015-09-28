@@ -1,4 +1,4 @@
-APPNAME="number_ten"
+APPNAME="the_last_hair"
 NDK_ROOT="/Applications/android-ndk-r10c"
 
 # options
